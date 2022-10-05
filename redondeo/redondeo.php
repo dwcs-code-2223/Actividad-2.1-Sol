@@ -39,7 +39,8 @@
 
         echo "La media ponderada es: $media_ponderada";
 
-        if ($cal_ud5 >= 4 && $cal_ud6 >= 4) {
+        //Se modifica para que los casos <=4.4 vayan a la rama suspensa
+        if ($cal_ud5 >= 4 && $cal_ud6 >= 4 && $media_ponderada>=UMBRAL_APROBADO) {
             if ($media_ponderada >= 5) {
                 //alumno/a aprobado
                 if (
@@ -50,8 +51,8 @@
                     if ($tareas_ap_alumno >= $umbral_tareas) {
                         $nota_eval = round($media_ponderada);
                     } else {
-                        $nota_eval = round($media_ponderada, 0, PHP_ROUND_HALF_DOWN);
-                        //$nota_eval = floor($media_ponderada);
+                        //$nota_eval = round($media_ponderada, 0, PHP_ROUND_HALF_DOWN);
+                        $nota_eval = floor($media_ponderada);
                     }
                 }
             } elseif ($media_ponderada >= 4.5 && $media_ponderada < 5) {
@@ -70,8 +71,8 @@
                     if ($tareas_ap_alumno >= $umbral_tareas) {
                         $nota_eval = round($media_ponderada);
                     } else {
-                        $nota_eval = round($media_ponderada, 0, PHP_ROUND_HALF_DOWN);
-                        //$nota_eval = floor($media_ponderada);
+                        //$nota_eval = round($media_ponderada, 0, PHP_ROUND_HALF_DOWN);
+                        $nota_eval = floor($media_ponderada);
                     }
                 }
             }
